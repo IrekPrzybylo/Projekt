@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Lab06="clr-namespace:Lab06"
+             mc:Ignorable="d"
+             x:Class="Lab06.Views.ItemDetailPage"
+             Title="{Binding Title}">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Lab06:ImageConverter x:Key="converter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label FontSize="22" Padding="15,0,15,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{Binding Item.FirstName}" d:Text="asdasd" FontAttributes="Bold" FontSize="22" />
+                                    <Span Text=" " FontAttributes="Bold" FontSize="22" />
+                                    <Span Text="{Binding Item.LastName}" d:Text="asdasd" FontAttributes="Bold" FontSize="22" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Frame HorizontalOptions="Center"
+                           Padding="0"
+                           IsClippedToBounds="True"
+                           CornerRadius="20"
+                           HeightRequest="128"
+                           WidthRequest="128">
+                        <Image  Source="{Binding Item.Photo,  Converter={StaticResource converter}}" Aspect="AspectFit"/>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+            <ScrollView Grid.Row="1">
+                <StackLayout Orientation="Vertical" Padding="16,16,16,0" Spacing="10">
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="Login:" d:Text="Login:" FontAttributes="Bold" FontSize="Medium" />
+                                    <Span Text=" " FontSize="Large" />
+                                    <Span Text="{Binding Item.Login}" FontSize="Medium" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Text="Opis:" FontAttributes="Bold" FontSize="Medium" />
+                    <Label Text="{Binding Item.Description}"  TextColor="Black" FontSize="Small" HeightRequest="80"/>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Grid.Row="2" Margin="0,0,0,20">
+                <Button Margin="0,10,0,0" Text="Profil"
+                            Command="{Binding OpenWebCommand}"
+                            BackgroundColor="#00e5ff"
+                            TextColor="Black" />
+                <Button Margin="0,10,0,0" Text="Sms"
+                        Command="{Binding SendSmsCommand}"
+                        BackgroundColor="#ffc400"
+                        TextColor="Black" />
+                <Button Margin="0,10,0,0" Text="Email"
+                        Command="{Binding SendEmailCommand}"
+                        BackgroundColor="#ff3d00"
+                        TextColor="Black" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

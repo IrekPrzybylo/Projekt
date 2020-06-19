@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Lab06.Views.ChatPage"
+               Title="{Binding Title}">
+
+    <ContentPage.Content>
+    <StackLayout>
+        <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadMessagesCommand}">
+            <CollectionView x:Name="ItemsCollectionView"
+                ItemsSource="{Binding Messages}">
+                <d:CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>First Item</x:String>
+                        <x:String>Second Item</x:String>
+                        <x:String>Third Item</x:String>
+                        <x:String>Fourth Item</x:String>
+                        <x:String>Fifth Item</x:String>
+                        <x:String>Sixth Item</x:String>
+                        <x:String>Seventh Item</x:String>
+                        <x:String>Seventh Item</x:String>
+                        <x:String>Seventh Item</x:String>
+                        <x:String>Seventh Item</x:String>
+                        <x:String>Seventh Item</x:String>
+                        
+                        </x:Array>
+                </d:CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="5">
+                                <Frame BackgroundColor="#8e8e93" CornerRadius="14">
+                                <Label Text="{Binding Text}" d:Text="{Binding}" TextColor="White" FontSize="Medium"/>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Grid Margin="5" HeightRequest="70" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+                <Frame CornerRadius="55"
+                   BackgroundColor="LightGray"
+                   Padding="15,0,15,0"
+                   Grid.Column="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry
+                        Grid.Column="0"
+                        Placeholder="Wiadomość"
+                        x:Name="Message"/>
+                        <Button Text="Wyślij"
+                                Clicked="SendMsg_Clicked"
+                                Grid.Column="1"
+                                CornerRadius="25"
+                                BackgroundColor="#53d769"
+                                
+                                Margin="5"/>
+                    </Grid>
+                </Frame>
+            
+        </Grid>
+    </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    
+    

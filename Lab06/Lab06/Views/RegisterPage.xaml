@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Lab06.Views.RegisterPage"
+             >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Anuluj" Clicked="Cancel_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <Frame CornerRadius="40"
+               Margin="17"
+               BackgroundColor="LightGray">
+            <StackLayout>
+            <ScrollView>
+            <StackLayout Spacing="10" Padding="15" VerticalOptions="Center">
+                        <Entry x:Name="E_Name" Placeholder="Imię" FontSize="Small" />
+                        <Entry x:Name="E_Lname" Placeholder="Nazwisko" FontSize="Small" Margin="0"  />
+                        <Entry x:Name="E_Login" Placeholder="Login" FontSize="Small" Margin="0" />
+                        <Entry x:Name="E_Pass" Placeholder="Hasło" FontSize="Small" Margin="0" IsPassword="True"/>
+                        <Entry x:Name="E_Phone" Placeholder="Telefon" FontSize="Small" Margin="0" />
+                        <Entry x:Name="E_Email" Placeholder="Email" FontSize="Small" Margin="0" />
+                        <Entry x:Name="E_Desc" Placeholder="Opis" FontSize="Small" Margin="0" />
+                        <Entry x:Name="E_Link" Placeholder="Link do profilu" FontSize="Small" Margin="0" />
+                        <Image x:Name="Image" Source="" />
+                    </StackLayout>
+            </ScrollView>
+                <Button Text="Zdjecie"
+                        BackgroundColor="OrangeRed"
+                        CornerRadius="22"
+                        Clicked="Image_Clicked"
+                        VerticalOptions="EndAndExpand"/>
+                <Button Text="Utwórz Konto"
+                        BackgroundColor="OrangeRed"
+                        CornerRadius="22"
+                        Clicked="Register_Clicked"
+                        VerticalOptions="EndAndExpand"/>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

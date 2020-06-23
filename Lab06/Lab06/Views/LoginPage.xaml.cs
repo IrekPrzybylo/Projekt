@@ -27,37 +27,38 @@ namespace Lab06.Views
             await Navigation.PushModalAsync(new NavigationPage(new RegisterPage()));    
         }
      
-        private bool CheckLogin()
-        {
-            if (!string.IsNullOrEmpty(EntryLogin.Text) || !string.IsNullOrEmpty(EntryPassword.Text))
-                return true;
-            else
-                return false;
-        }
+        //private bool CheckLogin()
+        //{
+        //    if (!string.IsNullOrEmpty(EntryLogin.Text) || !string.IsNullOrEmpty(EntryPassword.Text))
+        //        return true;
+        //    else
+        //        return false;
+        //}
 
-        async private void Login_Clicked(object sender, EventArgs e)
-        {
-            Student stud = new Student() { Login = EntryLogin.Text, Password = EntryPassword.Text };
-            if (CheckLogin())
-            {
-                if (viewModel.Items.Where(x => x.Login == stud.Login && x.Password == stud.Password).Count() == 0)
-                {
-                    await DisplayAlert("Login", "Niepoprawny Login lub Hasło", "OK");
-                }
-                else
-                {
+        //async private void Login_Clicked(object sender, EventArgs e)
+        //{
+        //    Student stud = new Student() { Login = EntryLogin.Text, Password = EntryPassword.Text };
+        //    if (CheckLogin())
+        //    {
 
-                    string logged = viewModel.Items.Where(x => x.Login == stud.Login && x.Password == stud.Password).First().Id;
-                    Application.Current.MainPage = new MainPage(logged);
-                }
-            }
-            else
-            {
-                await DisplayAlert("Login", "Logowanie niepoprawne, pusty Login lub Hasło.", "OK");
-            }
+        //        if (viewModel.Items.Where(x => x.Login == stud.Login && x.Password == stud.Password).Count() == 0)
+        //        {
+        //            await DisplayAlert("Login", "Niepoprawny Login lub Hasło", "OK");
+        //        }
+        //        else
+        //        {
 
-            // Application.Current.MainPage = new MainPage("sfsadfsfdaf");
-        }
+        //            string logged = viewModel.Items.Where(x => x.Login == stud.Login && x.Password == stud.Password).First().Id;
+        //            Application.Current.MainPage = new MainPage(logged);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        await DisplayAlert("Login", "Logowanie niepoprawne, pusty Login lub Hasło.", "OK");
+        //    }
+
+        //    // Application.Current.MainPage = new MainPage("sfsadfsfdaf");
+        //}
 
         protected override void OnAppearing()
         {

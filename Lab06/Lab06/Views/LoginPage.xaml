@@ -3,10 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Lab06.ViewModels"
              mc:Ignorable="d"
              x:Class="Lab06.Views.LoginPage">
 
-
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
     <StackLayout>
         <Label Text="Witaj"
                 Padding="0,100,0,0"
@@ -21,7 +25,8 @@
                    BackgroundColor="LightGray"
                    Padding="10,0,10,0"
                    Margin="20,20,20,10">
-            <Entry x:Name="EntryLogin" 
+            <Entry Text="{Binding Login}"
+                   x:Name="EntryLogin" 
                    Placeholder="Login"
                    >
             </Entry>
@@ -30,21 +35,22 @@
                    BackgroundColor="LightGray"
                    Padding="10,0,10,0"
                    Margin="20,10,20,20">
-            <Entry x:Name="EntryPassword"
+            <Entry Text="{Binding Password}"
+                   x:Name="EntryPassword"
                    Placeholder="Password"
                    IsPassword="True"
                    ></Entry>
         </Frame>
-        <Frame CornerRadius="55"
-                   BackgroundColor="LightGray"
-                   Padding="10,0,10,0"
-                   Margin="20,10,20,20">
-            <Button
+         
+                   
+            <Button CornerRadius="55"
+                    BackgroundColor="LightGray"
                     Text="Logowanie"
-                    Clicked="Login_Clicked"
+                    Margin="20,10,20,20"
+                    Command="{Binding LoginCommand}" 
                         >
             </Button>
-        </Frame>
+        
         <StackLayout
                 Orientation="Horizontal">
             <Label Text="Nie masz Konta?"
@@ -68,5 +74,5 @@
         </StackLayout>
 
     </StackLayout>
-
+    </ContentPage.Content>
 </ContentPage>
